@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>IRCTC Reservation Dashboard</title>
+
+<link rel="stylesheet" href="style.css">
+
+<style>
+
+body{
+font-family:Arial;
+margin:20px;
+}
+
+h3{
+color:#003366;
+}
+
+button{
+padding:6px 12px;
+cursor:pointer;
+}
+
+input,select{
+padding:5px;
+margin:5px;
+}
+
+.section{
+margin-bottom:25px;
+}
+
+.coach-btn{
+padding:6px 10px;
+margin:4px;
+font-size:12px;
+cursor:pointer;
+border-radius:5px;
+border:1px solid #ccc;
+}
+
+.selected{
+background-color:green;
+color:white;
+}
+
+.seat-info{
+font-weight:bold;
+color:darkblue;
+}
+
+.passenger-box{
+border:1px solid #ccc;
+padding:10px;
+margin:10px 0;
+}
+
+.train-card-container{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:15px;
+}
+
+.train-card{
+border:1px solid #ccc;
+padding:15px;
+width:250px;
+border-radius:8px;
+box-shadow:0 2px 6px rgba(0,0,0,0.2);
+cursor:pointer;
+background:#f9f9f9;
+}
+
+.train-card:hover{
+background:#eef4ff;
+}
+
+.train-title{
+font-weight:bold;
+color:#003366;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h2>Welcome, <span id="user"></span></h2>
+
+
+<!-- ================= SEARCH TRAINS ================= -->
+
+<div class="section" style="text-align:center;">
+
+<h3>Search Trains</h3>
+
+<input type="text" id="fromStation" placeholder="From Station">
+
+<input type="text" id="toStation" placeholder="To Station">
+
+<button onclick="searchByStations()">Search</button>
+
+<button onclick="showAllTrains()">Show All Trains</button>
+
+<br><br>
+
+<div id="trainCards" class="train-card-container"></div>
+
+</div>
+
+<hr>
+
+
+<!-- ================= BOOK TICKET ================= -->
+
+<div class="section">
+
+<h3>Book Ticket</h3>
+
+<!-- Coach buttons will be generated dynamically -->
+<div id="coachButtons"></div>
+
+<br>
+
+Selected Coach:
+
+<input type="text" id="classType" readonly>
+
+<div id="seatInfo" class="seat-info"></div>
+
+<hr>
+
+Journey Date:
+
+<input type="date" id="journeyDate">
+
+<hr>
+
+<h4>Passenger Details</h4>
+
+<div id="passengerContainer"></div>
+
+<button onclick="addPassenger()">+ Add Passenger</button>
+
+<hr>
+
+<h4>Payment Mode</h4>
+
+<select id="paymentMode">
+<option value="UPI">UPI</option>
+<option value="Card">Card</option>
+<option value="NetBanking">Net Banking</option>
+</select>
+
+<br><br>
+
+<button onclick="confirmBooking()">Confirm Booking</button>
+
+</div>
+
+<hr>
+
+
+<!-- ================= TICKET STATUS ================= -->
+
+<div class="section">
+
+<!-- <h3>Ticket Status</h3> -->
+
+<!-- <button onclick="viewStatus()">Check Status</button> -->
+
+<button onclick="logout()">Logout</button>
+
+<div id="reservationList"></div>
+
+</div>
+
+
+<script src="dashboard.js"></script>
+
+</body>
+</html>
